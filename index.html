@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crumbl Cookies | Fresh baked Cookies and Desserts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--pink:#ff9ebb;
+--pink-hot:#ff7aa2;
+--pink-soft:#ffe6ef;
+--pink-hero:#ffd6e4;
+--pink-tag:#ff8fb3;
+--black:#111111;
+--gray:#5c5c5c;
+--gray-light:#8a8a8a;
+--white:#ffffff;
+--max:1120px;
+--font:"Nunito",system-ui,-apple-system,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{
+font-family:var(--font);
+color:var(--black);
+background:var(--white);
+line-height:1.5;
+-webkit-font-smoothing:antialiased;
+overflow-x:hidden;
+}
+img, video{max-width:100%;display:block;height:auto}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+ul{list-style:none}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+
+.site-header{
+position:sticky;top:0;z-index:100;
+background:rgba(255,255,255,.92);
+backdrop-filter:blur(12px);
+border-bottom:1px solid rgba(0,0,0,.06);
+}
+.header-inner{
+max-width:1280px;margin:0 auto;
+padding:14px 28px;
+display:flex;align-items:center;justify-content:space-between;gap:24px;
+}
+.logo{
+font-size:28px;font-weight:900;letter-spacing:-0.04em;
+text-transform:lowercase;line-height:1;
+display:flex;align-items:center;gap:10px;
+}
+.logo img{
+height:32px;
+width:auto;
+border-radius:4px;
+}
+.logo span{color:var(--pink-hot)}
+.nav-desktop{display:flex;align-items:center;gap:28px;flex:1;justify-content:center}
+.nav-desktop a{
+font-size:15px;font-weight:700;color:var(--black);
+transition:opacity .2s ease;
+}
+.nav-desktop a:hover{opacity:.55}
+.header-actions{display:flex;align-items:center;gap:14px}
+.signin-link{font-size:14px;font-weight:700;transition:opacity .2s}
+.signin-link:hover{opacity:.55}
+.btn{
+display:inline-flex;align-items:center;justify-content:center;
+padding:12px 26px;
+border-radius:999px;
+font-size:14px;font-weight:800;
+letter-spacing:.02em;
+transition:transform .2s ease,opacity .2s ease,background .2s ease,color .2s ease;
+}
+.btn:hover{transform:scale(1.03);opacity:.92}
+.btn:active{transform:scale(.98)}
+.btn-dark{background:var(--black);color:var(--white)}
+.btn-dark:hover{background:#2a2a2a}
+.btn-outline{background:transparent;color:var(--black);border:2px solid var(--black);padding:10px 22px}
+.btn-outline:hover{background:var(--black);color:var(--white)}
+.menu-toggle{
+display:none;width:44px;height:44px;
+align-items:center;justify-content:center;
+border-radius:50%;
+}
+.menu-toggle span,.menu-toggle span::before,.menu-toggle span::after{
+display:block;width:20px;height:2px;background:var(--black);position:relative;border-radius:2px;
+}
+.menu-toggle span::before,.menu-toggle span::after{content:"";position:absolute;left:0}
+.menu-toggle span::before{top:-6px}
+.menu-toggle span::after{top:6px}
+
+.mobile-nav{
+display:none;position:fixed;inset:0;z-index:200;
+background:rgba(255,255,255,.98);
+padding:88px 28px 40px;
+flex-direction:column;gap:8px;
+}
+.mobile-nav.open{display:flex}
+.mobile-nav a{
+font-size:28px;font-weight:800;padding:12px 0;
+border-bottom:1px solid rgba(0,0,0,.06);
+}
+.mobile-nav .btn{margin-top:24px;align-self:flex-start}
+.mobile-close{
+position:absolute;top:18px;right:22px;
+width:44px;height:44px;font-size:28px;font-weight:400;line-height:1;
+}
+
+.hero{
+position:relative;
+background:
+radial-gradient(ellipse 80% 60% at 20% 30%,rgba(255,255,255,.55),transparent 60%),
+radial-gradient(ellipse 70% 50% at 85% 20%,rgba(255,182,204,.45),transparent 55%),
+linear-gradient(160deg,var(--pink-hero) 0%,#ffc8da 40%,#ffdeea 100%);
+overflow:hidden;
+min-height:520px;
+}
+.hero::before{
+content:"";position:absolute;inset:0;opacity:.35;pointer-events:none;
+background:
+url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='0.35' d='M0,192L48,176C96,160,192,128,288,133.3C384,139,480,181,576,186.7C672,192,768,160,864,138.7C960,117,1056,107,1152,122.7C1248,139,1344,181,1392,202.7L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'/%3E%3C/svg%3E") bottom center/cover no-repeat,
+url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ff9ebb' fill-opacity='0.25' d='M0,96L60,112C120,128,240,160,360,165.3C480,171,600,149,720,128C840,107,960,85,1080,90.7C1200,96,1320,128,1380,144L1440,160L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z'/%3E%3C/svg%3E") top center/cover no-repeat;
+}
+.hero-inner{
+position:relative;z-index:1;
+max-width:1280px;margin:0 auto;
+padding:64px 28px 72px;
+display:grid;grid-template-columns:1fr 1.15fr;gap:40px;align-items:center;
+}
+.hero-copy{max-width:420px}
+.hero-copy h1{
+font-size:clamp(42px,5.5vw,72px);
+font-weight:900;letter-spacing:-.03em;line-height:1.05;
+margin-bottom:18px;
+}
+.hero-copy p{
+font-size:18px;font-weight:500;color:var(--gray);
+margin-bottom:28px;line-height:1.55;
+}
+.hero-media{
+display:flex;justify-content:center;align-items:center;
+}
+.hero-media video{
+width:min(100%,620px);
+filter:drop-shadow(0 28px 40px rgba(180,60,100,.18));
+transform:translateX(4%);
+animation:floaty 6s ease-in-out infinite;
+border-radius:24px;
+object-fit:cover;
+}
+@keyframes floaty{
+0%,100%{transform:translateX(4%) translateY(0)}
+50%{transform:translateX(4%) translateY(-10px)}
+}
+
+.section{padding:88px 28px}
+.section-inner{max-width:var(--max);margin:0 auto}
+.section-head{margin-bottom:64px;max-width:560px}
+.tag{
+display:inline-block;
+background:var(--pink-tag);
+color:var(--white);
+font-size:12px;font-weight:800;
+letter-spacing:.06em;text-transform:uppercase;
+padding:6px 10px;border-radius:4px;
+margin-bottom:14px;
+}
+.tag.muted{background:var(--pink-hot)}
+.section-head h2{
+font-size:clamp(34px,4vw,52px);
+font-weight:900;letter-spacing:-.03em;line-height:1.1;
+margin-bottom:12px;
+}
+.section-head p{font-size:16px;font-weight:500;color:var(--gray-light)}
+
+.flavor{
+display:grid;grid-template-columns:1fr 1fr;
+gap:48px;align-items:center;
+margin-bottom:96px;
+}
+.flavor:last-child{margin-bottom:0}
+.flavor.reverse .flavor-media{order:2}
+.flavor.reverse .flavor-copy{order:1}
+.flavor-media{
+position:relative;
+display:flex;justify-content:center;align-items:center;
+min-height:320px;
+}
+.flavor-media img{
+width:min(100%,460px);
+filter:drop-shadow(0 20px 30px rgba(0,0,0,.12));
+transition:transform .45s ease;
+}
+.flavor:hover .flavor-media img{transform:scale(1.03) rotate(-1deg)}
+.flavor:nth-child(odd) .flavor-media img{margin-left:-8%}
+.flavor:nth-child(even) .flavor-media img{margin-right:-8%}
+.flavor-copy{max-width:400px}
+.flavor.reverse .flavor-copy{margin-left:auto}
+.flavor-badge{
+display:inline-block;
+background:var(--pink-tag);
+color:var(--white);
+font-size:11px;font-weight:800;
+letter-spacing:.08em;text-transform:uppercase;
+padding:5px 9px;border-radius:3px;
+margin-bottom:14px;
+}
+.flavor-copy h3{
+font-size:clamp(26px,3vw,36px);
+font-weight:900;letter-spacing:-.02em;line-height:1.15;
+margin-bottom:14px;
+}
+.flavor-copy .subtitle{
+font-size:14px;font-weight:700;color:var(--gray);
+margin-top:-8px;margin-bottom:12px;
+}
+.flavor-copy p{
+font-size:16px;font-weight:500;color:var(--gray);
+line-height:1.6;margin-bottom:24px;
+}
+.flavor-actions{display:flex;flex-wrap:wrap;align-items:center;gap:18px}
+.link-btn{
+font-size:15px;font-weight:800;
+border-bottom:2px solid var(--black);
+padding-bottom:2px;
+transition:opacity .2s,border-color .2s;
+}
+.link-btn:hover{opacity:.55}
+.link-btn.pink{color:var(--pink-hot);border-color:var(--pink-hot)}
+
+.classic{background:linear-gradient(180deg,#fff 0%,#fff7fa 50%,#fff 100%)}
+
+.site-footer{margin-top:40px}
+.footer-top{
+max-width:var(--max);margin:0 auto;
+padding:64px 28px 48px;
+}
+.footer-grid{
+display:grid;grid-template-columns:repeat(3,1fr);gap:40px;
+}
+.footer-col h4{
+font-size:13px;font-weight:800;letter-spacing:.08em;
+text-transform:uppercase;margin-bottom:18px;color:var(--gray-light);
+}
+.footer-col a{
+display:block;font-size:15px;font-weight:700;
+padding:6px 0;transition:opacity .2s;
+}
+.footer-col a:hover{opacity:.5}
+.socials{
+display:flex;justify-content:center;gap:22px;
+padding:16px 28px 40px;
+}
+.socials a{
+width:40px;height:40px;border-radius:50%;
+display:flex;align-items:center;justify-content:center;
+transition:transform .2s,opacity .2s;color:var(--black);
+}
+.socials a:hover{transform:scale(1.12);opacity:.55}
+.socials svg{width:22px;height:22px;fill:currentColor}
+.footer-brand{
+background:var(--pink);
+padding:56px 28px 28px;
+text-align:center;
+}
+.footer-wordmark{
+font-size:clamp(48px,12vw,120px);
+font-weight:900;letter-spacing:-.05em;
+text-transform:lowercase;line-height:1;
+color:var(--black);margin-bottom:28px;
+}
+.footer-legal{
+display:flex;flex-wrap:wrap;justify-content:center;align-items:center;
+gap:8px 14px;
+font-size:12px;font-weight:600;color:rgba(0,0,0,.65);
+}
+.footer-legal a{transition:opacity .2s}
+.footer-legal a:hover{opacity:.55}
+.footer-legal .sep{opacity:.4}
+.credit{
+margin-top:22px;padding-top:18px;
+border-top:1px solid rgba(0,0,0,.12);
+font-size:13px;font-weight:700;letter-spacing:.04em;
+}
+.credit a{
+color:rgba(0,0,0,.72);
+transition:color .2s,opacity .2s;
+}
+.credit a:hover{color:var(--black);opacity:1}
+.credit em{font-style:normal;font-weight:900}
+
+.credits-bar {
+text-align:center;
+padding:24px 28px;
+font-size:14px;
+font-weight:800;
+background-color:rgba(0,0,0,0.03);
+border-top:1px solid rgba(0,0,0,0.06);
+letter-spacing:0.05em;
+text-transform:uppercase;
+}
+.credits-bar a {
+color:var(--black);
+transition:color 0.2s ease, opacity 0.2s ease;
+}
+.credits-bar a:hover {
+color:var(--pink-hot);
+opacity:0.9;
+}
+
+.modal-overlay{
+position:fixed;inset:0;z-index:300;
+background:rgba(0,0,0,.45);
+display:none;align-items:center;justify-content:center;
+padding:24px;
+}
+.modal-overlay.open{display:flex}
+.modal{
+background:var(--white);border-radius:24px;
+max-width:480px;width:100%;
+padding:32px;position:relative;
+box-shadow:0 30px 60px rgba(0,0,0,.2);
+animation:modalIn .25s ease;
+}
+@keyframes modalIn{
+from{opacity:0;transform:translateY(12px) scale(.98)}
+to{opacity:1;transform:none}
+}
+.modal-close{
+position:absolute;top:14px;right:16px;
+width:36px;height:36px;font-size:24px;border-radius:50%;
+transition:background .2s;
+}
+.modal-close:hover{background:rgba(0,0,0,.06)}
+.modal img{width:180px;margin:0 auto 18px;filter:drop-shadow(0 12px 20px rgba(0,0,0,.1))}
+.modal h3{font-size:24px;font-weight:900;text-align:center;margin-bottom:10px}
+.modal p{font-size:15px;color:var(--gray);text-align:center;margin-bottom:22px;line-height:1.55}
+.modal .btn{width:100%}
+
+.toast{
+position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);
+background:var(--black);color:var(--white);
+padding:14px 22px;border-radius:999px;
+font-size:14px;font-weight:700;
+z-index:400;opacity:0;pointer-events:none;
+transition:transform .3s ease,opacity .3s ease;
+box-shadow:0 12px 30px rgba(0,0,0,.25);
+}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+
+@media (max-width:960px){
+.nav-desktop,.signin-link{display:none}
+.menu-toggle{display:flex}
+.hero-inner{grid-template-columns:1fr;text-align:center;padding:48px 22px 56px}
+.hero-copy{max-width:100%;margin:0 auto}
+.hero-media video{transform:none;animation:none;width:min(100%,420px)}
+.flavor{grid-template-columns:1fr;gap:24px;margin-bottom:72px;text-align:center}
+.flavor.reverse .flavor-media,.flavor.reverse .flavor-copy{order:unset}
+.flavor-copy,.flavor.reverse .flavor-copy{max-width:100%;margin:0 auto}
+.flavor-actions{justify-content:center}
+.flavor:nth-child(odd) .flavor-media img,
+.flavor:nth-child(even) .flavor-media img{margin:0}
+.footer-grid{grid-template-columns:1fr;gap:32px;text-align:center}
+.section{padding:64px 22px}
+}
+@media (max-width:560px){
+.header-inner{padding:12px 18px}
+.logo{font-size:24px}
+.btn{padding:11px 20px;font-size:13px}
+.hero{min-height:auto}
+.hero-copy h1{font-size:40px}
+.flavor-media{min-height:240px}
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+<div class="header-inner">
+<a href="#" class="logo" aria-label="crumbl home">
+<img src="logo.jpg" alt="Crumbl Logo">
+<span>crumbl</span>
+</a>
+<nav class="nav-desktop" aria-label="Primary">
+<a href="#home">Home</a>
+<a href="#order">Order</a>
+<a href="#locations">Locations</a>
+<a href="#catering">Catering</a>
+<a href="#gift-cards">Gift Cards</a>
+<a href="#merch">Merch</a>
+</nav>
+<div class="header-actions">
+<a href="#signin" class="signin-link">Sign in</a>
+<a href="#order" class="btn btn-dark">Order Now</a>
+<button class="menu-toggle" id="menuToggle" aria-label="Open menu"><span></span></button>
+</div>
+</div>
+</header>
+
+<div class="mobile-nav" id="mobileNav" aria-hidden="true">
+<button class="mobile-close" id="mobileClose" aria-label="Close menu">×</button>
+<a href="#home">Home</a>
+<a href="#order">Order</a>
+<a href="#locations">Locations</a>
+<a href="#catering">Catering</a>
+<a href="#gift-cards">Gift Cards</a>
+<a href="#merch">Merch</a>
+<a href="#signin">Sign in</a>
+<a href="#order" class="btn btn-dark">Order Now</a>
+</div>
+
+<main>
+<section class="hero" id="home">
+<div class="hero-inner">
+<div class="hero-copy">
+<h1>Pack Your Bags!</h1>
+<p>Escape into tropical flavors with this week’s vacation-inspired lineup—creamy, sunny, and gone by Sunday.</p>
+<a href="#order" class="btn btn-dark">ORDER NOW</a>
+</div>
+<div class="hero-media">
+<video autoplay loop muted playsinline aria-label="Tropical Crumbl vacation video preview">
+<source src="hero.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+</div>
+</div>
+</section>
+
+<section class="section" id="order">
+<div class="section-inner">
+<div class="section-head">
+<span class="tag">6 / 10</span>
+<h2>Weekly Flavors</h2>
+<p>New flavors every week. Perfect for every craving.</p>
+</div>
+
+<article class="flavor" data-name="Sandy Beach Banana Pudding Cup" data-desc="A creamy banana pudding layered with velvety vanilla pudding and vanilla wafers, topped with finely crushed vanilla wafers, served with a mini beach shovel." data-img="image02.jpg">
+<div class="flavor-media"><img src="image02.jpg" alt="Sandy Beach Banana Pudding Cup"></div>
+<div class="flavor-copy">
+<span class="flavor-badge">LTD TIME</span>
+<h3>Sandy Beach Banana Pudding Cup</h3>
+<p>A creamy banana pudding layered with velvety vanilla pudding and vanilla wafers, topped with finely crushed vanilla wafers, served with a mini beach shovel.</p>
+<div class="flavor-actions">
+<button type="button" class="link-btn pink js-add">Add to Box</button>
+<button type="button" class="link-btn js-details">View Details</button>
+</div>
+</div>
+</article>
+
+<article class="flavor reverse" data-name="Beach Bum Cookie" data-desc="A graham cookie topped with blue honey cream cheese frosting, finished with a teddy graham lounging inside a peach ring float under a decorative parasol." data-img="image03.jpg">
+<div class="flavor-media"><img src="image03.jpg" alt="Beach Bum Cookie"></div>
+<div class="flavor-copy">
+<span class="flavor-badge">NEW</span>
+<h3>Beach Bum Cookie</h3>
+<p>A graham cookie topped with blue honey cream cheese frosting, finished with a teddy graham lounging inside a peach ring float under a decorative parasol.</p>
+<div class="flavor-actions">
+<button type="button" class="link-btn pink js-add">Add to Box</button>
+<button type="button" class="link-btn js-details">View Details</button>
+</div>
+</div>
+</article>
+
+<article class="flavor" data-name="Hawaiian Coconut Cookie" data-desc="A soft cake batter cookie crowned with a colorful zig-zag of green, pink, purple, and yellow coconut cream cheese frosting, inspired by a vibrant rainbow." data-img="image04.jpg">
+<div class="flavor-media"><img src="image04.jpg" alt="Hawaiian Coconut Cookie"></div>
+<div class="flavor-copy">
+<span class="flavor-badge">RETURNING</span>
+<h3>Hawaiian Coconut Cookie</h3>
+<p>A soft cake batter cookie crowned with a colorful zig-zag of green, pink, purple, and yellow coconut cream cheese frosting, inspired by a vibrant rainbow.</p>
+<div class="flavor-actions">
+<button type="button" class="link-btn pink js-add">Add to Box</button>
+<button type="button" class="link-btn js-details">View Details</button>
+</div>
+</div>
+</article>
+
+<article class="flavor reverse" data-name="Molten Lava Cake" data-desc="A rich chocolate cake dusted with powdered sugar and topped with smooth French vanilla mousse, served with a side of warm chocolate ganache for pouring." data-img="image05.jpg">
+<div class="flavor-media"><img src="image05.jpg" alt="Molten Lava Cake"></div>
+<div class="flavor-copy">
+<span class="flavor-badge">FAVORITE</span>
+<h3>Molten Lava Cake</h3>
+<p>A rich chocolate cake dusted with powdered sugar and topped with smooth French vanilla mousse, served with a side of warm chocolate ganache for pouring.</p>
+<div class="flavor-actions">
+<button type="button" class="link-btn pink js-add">Add to Box</button>
+<button type="button" class="link-btn js-details">View Details</button>
+</div>
+</div>
+</article>
+
+<article class="flavor" data-name="Pineapple Whip Cookie" data-desc="A pineapple sugar cookie with a perfect swirl of a fresh, whipped pineapple-flavored topping." data-img="image06.jpg">
+<div class="flavor-media"><img src="image06.jpg" alt="Pineapple Whip Cookie"></div>
+<div class="flavor-copy">
+<span class="flavor-badge">RETURNING</span>
+<h3>Pineapple Whip Cookie</h3>
+<p>A pineapple sugar cookie with a perfect swirl of a fresh, whipped pineapple-flavored topping.</p>
+<div class="flavor-actions">
+<button type="button" class="link-btn pink js-add">Add to Box</button>
+<button type="button" class="link-btn js-details">View Details</button>
+</div>
+</div>
+</article>
+
+<article class="flavor reverse" data-name="Key Lime Cheesecake" data-desc="A graham crust topped with key lime cheesecake filling, finished with fresh whipped cream dollops around the edge, graham crumbs, and fresh lime." data-img="image07.jpg">
+<div class="flavor-media"><img src="image07.jpg" alt="Key Lime Cheesecake"></div>
+<div class="flavor-copy">
+<span class="flavor-badge">RETURNING</span>
+<h3>Key Lime Cheesecake</h3>
+<p>A graham crust topped with key lime cheesecake filling, finished with fresh whipped cream dollops around the edge, graham crumbs, and fresh lime.</p>
+<div class="flavor-actions">
+<button type="button" class="link-btn pink js-add">Add to Box</button>
+<button type="button" class="link-btn js-details">View Details</button>
+</div>
+</div>
+</article>
+
+<article class="flavor" data-name="Chocolate Chip Cookie Thins" data-desc="Delicately crisp cookies with caramelized edges, chewy centers, and semi-sweet chocolate chips." data-img="image08.jpg">
+<div class="flavor-media"><img src="image08.jpg" alt="Chocolate Chip Cookie Thins"></div>
+<div class="flavor-copy">
+<span class="flavor-badge">NEW</span>
+<h3>Chocolate Chip Cookie Thins</h3>
+<p class="subtitle">(Set of 3)</p>
+<p>Delicately crisp cookies with caramelized edges, chewy centers, and semi-sweet chocolate chips.</p>
+<div class="flavor-actions">
+<button type="button" class="link-btn pink js-add">Add to Box</button>
+<button type="button" class="link-btn js-details">Learn More</button>
+</div>
+</div>
+</article>
+</div>
+</section>
+
+<section class="section classic" id="classics">
+<div class="section-inner">
+<div class="section-head">
+<span class="tag muted">Always Available</span>
+<h2>Classic Flavors</h2>
+<p>These flavors are here to stay! Enjoy your classic favorites anytime.</p>
+</div>
+
+<article class="flavor" data-name="Pink Sugar Cookie" data-desc="A classic almond sugar cookie topped with a silky pink swoop of real almond frosting." data-img="image09.jpg">
+<div class="flavor-media"><img src="image09.jpg" alt="Pink Sugar Cookie"></div>
+<div class="flavor-copy">
+<h3>Pink Sugar Cookie</h3>
+<p>A classic almond sugar cookie topped with a silky pink swoop of real almond frosting.</p>
+<div class="flavor-actions">
+<button type="button" class="link-btn pink js-add">Add to Box</button>
+<button type="button" class="link-btn js-details">Learn More</button>
+</div>
+</div>
+</article>
+
+<article class="flavor reverse" data-name="Brownie Batter Cookie" data-desc="A classic chocolate cookie packed with gooey semi-sweet chocolate chips and topped with delectable brownie batter." data-img="image10.jpg">
+<div class="flavor-media"><img src="image10.jpg" alt="Brownie Batter Cookie"></div>
+<div class="flavor-copy">
+<h3>Brownie Batter Cookie</h3>
+<p>A classic chocolate cookie packed with gooey semi-sweet chocolate chips and topped with delectable brownie batter.</p>
+<div class="flavor-actions">
+<button type="button" class="link-btn pink js-add">Add to Box</button>
+<button type="button" class="link-btn js-details">Learn More</button>
+</div>
+</div>
+</article>
+
+<article class="flavor" data-name="Chocolate Chip Cookie" data-desc="A classic warm brown sugar cookie loaded with melty milk chocolate chips and rich semi-sweet chocolate chunks." data-img="image11.jpg">
+<div class="flavor-media"><img src="image11.jpg" alt="Chocolate Chip Cookie"></div>
+<div class="flavor-copy">
+<h3>Chocolate Chip Cookie</h3>
+<p>A classic warm brown sugar cookie loaded with melty milk chocolate chips and rich semi-sweet chocolate chunks.</p>
+<div class="flavor-actions">
+<button type="button" class="link-btn pink js-add">Add to Box</button>
+<button type="button" class="link-btn js-details">Learn More</button>
+</div>
+</div>
+</article>
+
+<article class="flavor reverse" data-name="S'mores Cookie" data-desc="A classic graham cracker cookie packed with milk chocolate chips then topped with a melty marshmallow, chocolate drizzle, and buttery graham cracker crumbs." data-img="image12.jpg">
+<div class="flavor-media"><img src="image12.jpg" alt="S'mores Cookie"></div>
+<div class="flavor-copy">
+<h3>S'mores Cookie</h3>
+<p>A classic graham cracker cookie packed with milk chocolate chips then topped with a melty marshmallow, chocolate drizzle, and buttery graham cracker crumbs.</p>
+<div class="flavor-actions">
+<button type="button" class="link-btn pink js-add">Add to Box</button>
+<button type="button" class="link-btn js-details">Learn More</button>
+</div>
+</div>
+</article>
+</div>
+</section>
+
+<section class="section" id="locations" style="padding-top:40px;padding-bottom:40px">
+<div class="section-inner" style="text-align:center;max-width:800px">
+<span class="tag">Find Us</span>
+<h2 style="font-size:clamp(28px,3.5vw,40px);font-weight:900;margin:12px 0 16px">Locations</h2>
+<p style="color:var(--gray);margin-bottom:28px;font-weight:500">Visit a Crumbl near you for fresh, warm cookies every day.</p>
+<div style="border-radius:20px;overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,.1);aspect-ratio:16/10">
+<iframe title="Crumbl Cookies location map" width="100%" height="100%" style="border:0;min-height:360px" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215444857858!2d-73.98784412342548!3d40.75797873483955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25859c1b31273%3A0x8673f888362d854e!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" allowfullscreen></iframe>
+</div>
+</div>
+</section>
+
+<section id="catering" class="sr-only" aria-hidden="true">Catering</section>
+<section id="gift-cards" class="sr-only" aria-hidden="true">Gift Cards</section>
+<section id="merch" class="sr-only" aria-hidden="true">Merch</section>
+<section id="signin" class="sr-only" aria-hidden="true">Sign in</section>
+</main>
+
+<footer class="site-footer">
+<div class="footer-top">
+<div class="footer-grid">
+<div class="footer-col">
+<h4>Company</h4>
+<a href="#order">Order</a>
+<a href="#home">Our story</a>
+<a href="#home">Rewards</a>
+<a href="#home">Nutrition & Allergy</a>
+<a href="#home">Support</a>
+<a href="#home">Blog</a>
+<a href="#gift-cards">Gift Card Balance</a>
+<a href="#order">Flavors Map</a>
+</div>
+<div class="footer-col">
+<h4>Get Involved</h4>
+<a href="#home">Press</a>
+<a href="#home">Collaborate</a>
+<a href="#home">Franchising</a>
+<a href="#home">Franchise Store Jobs</a>
+<a href="#home">HQ Careers</a>
+<a href="#home">Crumbl Cares</a>
+</div>
+<div class="footer-col">
+<h4>Explore</h4>
+<a href="#locations">Locations</a>
+<a href="#catering">Catering</a>
+<a href="#merch">Merch</a>
+<a href="#gift-cards">Gift Cards</a>
+<a href="#order">Dirty Sodas</a>
+<a href="#order">Fan Flavor Vote</a>
+</div>
+</div>
+</div>
+<div class="socials" aria-label="Social media">
+<a href="https://www.instagram.com/crumblcookies/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 3.202 0 1.556-.01 1.937-.069 3.202-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.85-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-3.201 0-1.556.01-1.937.07-3.201.149-3.225 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+</a>
+<a href="https://www.facebook.com/crumblcookies/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+</a>
+<a href="https://www.tiktok.com/@crumblcookies" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48.04 2.96.04 4.44-1.22-.32-2.34.33-2.5 1.57-.2 1.56 1.24 2.52 2.61 1.95.82-.34 1.34-1.2 1.32-2.09.01-4.03-.01-8.06.01-12.09z"/></svg>
+</a>
+</div>
+<div class="footer-brand">
+<div class="footer-wordmark">crumbl</div>
+<div class="footer-legal">
+<a href="#home">Privacy Policy</a>
+<span class="sep">•</span>
+<a href="#home">Terms of Service</a>
+<span class="sep">•</span>
+<a href="#home">Do Not Sell My Personal Information</a>
+<span class="sep">•</span>
+<a href="#home">Accessibility</a>
+</div>
+<div class="credit">
+© 2026 Crumbl Cookies. All rights reserved.
+</div>
+</div>
+<div class="credits-bar">
+<a href="https://palexdigital.pages.dev/" target="_blank" rel="noopener noreferrer">Developed By paléXdigital</a>
+</div>
+</footer>
+
+<div class="modal-overlay" id="modalOverlay">
+<div class="modal">
+<button class="modal-close" id="modalClose" aria-label="Close modal">×</button>
+<img id="modalImg" src="image02.jpg" alt="">
+<h3 id="modalTitle">Sandy Beach Banana Pudding Cup</h3>
+<p id="modalDesc"></p>
+<button type="button" class="btn btn-dark js-modal-add">Add to Box</button>
+</div>
+</div>
+
+<div class="toast" id="toast">Added to your box</div>
+
+<script>
+(function () {
+  var menuToggle = document.getElementById("menuToggle");
+  var mobileClose = document.getElementById("mobileClose");
+  var mobileNav = document.getElementById("mobileNav");
+  var modal = document.getElementById("modalOverlay");
+  var modalClose = document.getElementById("modalClose");
+  var modalImg = document.getElementById("modalImg");
+  var modalTitle = document.getElementById("modalTitle");
+  var modalDesc = document.getElementById("modalDesc");
+  var toast = document.getElementById("toast");
+  var activeFlavor = null;
+  var toastTimer;
+
+  function openMenu() {
+    mobileNav.classList.add("open");
+    mobileNav.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeMenu() {
+    mobileNav.classList.remove("open");
+    mobileNav.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  }
+
+  function showToast(message) {
+    toast.textContent = message;
+    toast.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () {
+      toast.classList.remove("show");
+    }, 2400);
+  }
+
+  function openModal(article) {
+    activeFlavor = article;
+    modalTitle.textContent = article.getAttribute("data-name");
+    modalDesc.textContent = article.getAttribute("data-desc");
+    modalImg.src = article.getAttribute("data-img");
+    modalImg.alt = article.getAttribute("data-name");
+    modal.classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeModal() {
+    modal.classList.remove("open");
+    if (!mobileNav.classList.contains("open")) {
+      document.body.style.overflow = "";
+    }
+    activeFlavor = null;
+  }
+
+  menuToggle.addEventListener("click", openMenu);
+  mobileClose.addEventListener("click", closeMenu);
+
+  mobileNav.querySelectorAll("a").forEach(function (link) {
+    link.addEventListener("click", closeMenu);
+  });
+
+  document.querySelectorAll(".js-details").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      openModal(btn.closest(".flavor"));
+    });
+  });
+
+  document.querySelectorAll(".js-add").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var name = btn.closest(".flavor").getAttribute("data-name");
+      showToast(name + " added to your box");
+    });
+  });
+
+  document.querySelector(".js-modal-add").addEventListener("click", function () {
+    if (activeFlavor) {
+      showToast(activeFlavor.getAttribute("data-name") + " added to your box");
+    }
+    closeModal();
+  });
+
+  modalClose.addEventListener("click", closeModal);
+  modal.addEventListener("click", function (e) {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+      closeModal();
+      closeMenu();
+    }
+  });
+})();
+</script>
+</body>
+</html>
